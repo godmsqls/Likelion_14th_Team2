@@ -5,13 +5,15 @@ import { Condition } from './pages/Condition'
 import { ConditionMain } from './pages/ConditionMain'
 import { Simulation } from './pages/Simulation'
 import { SimulationMain } from './pages/SimulationMain'
+import { Landing } from './pages/Landing'
 
 function App() {
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Landing/>}/>
+        <Route path='/Home' element={<Home/>}/>
 
         {/* element 수정 필요 */}
         <Route path='/Simulation' element={<Simulation />} />
