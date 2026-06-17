@@ -21,33 +21,33 @@ export function Landing() {
     const [pw, setPw] = useState('');
 
     const handleLogin = async () => {
-        if (!id || !pw) {
-            setIsFailModalOpen(true);
-            setIsModalOpen(false);
-            return;
-        }
+        // if (!id || !pw) {
+        //     setIsFailModalOpen(true);
+        //     setIsModalOpen(false);
+        //     return;
+        // }
 
         try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userId: id,
-                    userpwd: pw
-                })
-            });
+            // const response = await fetch('/api/login', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({
+            //         userId: id,
+            //         userpwd: pw
+            //     })
+            // });
 
-            if (!response.ok) {
-                setIsFailModalOpen(true);
-                setIsModalOpen(false);
-                return;
-            }
+            // if (!response.ok) {
+            //     setIsFailModalOpen(true);
+            //     setIsModalOpen(false);
+            //     return;
+            // }
 
             // 일반 로그인 시 홈으로 이동
             // 최초 로그인 시 가이드 이동 구현 필요
-            navigate('/'); 
+            navigate('/Home'); 
             
         } catch (error) {
             console.error("로그인 중 에러 발생:", error);
