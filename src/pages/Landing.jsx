@@ -3,11 +3,15 @@ import logo from '../assets/Logo.png'
 import Map from '../assets/Map.png'
 import login from '../assets/Login_Landing.png'
 import { Btn } from '../components/Btn';
+import { useNavigate } from 'react-router-dom';
 
 export function Landing() {
     const [isHovered, setIsHovered] = useState(false);
     const [isLoginStep, setIsLoginStep] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isFailModalOpen, setIsFailModalOpen] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleMapClick = () => {if(!isLoginStep) setIsLoginStep(true);};
 
@@ -15,6 +19,43 @@ export function Landing() {
 
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
+
+    const handleLogin = async () => {
+        if (!id || !pw) {
+            setIsFailModalOpen(true);
+            setIsModalOpen(false);
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userId: id,
+                    userpwd: pw
+                })
+            });
+
+            if (!response.ok) {
+                setIsFailModalOpen(true);
+                setIsModalOpen(false);
+                return;
+            }
+
+            // 일반 로그인 시 홈으로 이동
+            // 최초 로그인 시 가이드 이동 구현 필요
+            navigate('/'); 
+            
+        } catch (error) {
+            console.error("로그인 중 에러 발생:", error);
+            setIsFailModalOpen(true);
+            setIsModalOpen(false);
+            return;
+        }
+    };
 
     return (
         <>
@@ -200,12 +241,91 @@ export function Landing() {
                             </div>
 
                             <div style={{ flex: 1 }}>
-                                <Btn text="로그인하기" num="1" />
+                                <div style={{ width: '100%' }} onClick={handleLogin}>
+                                    <Btn text="로그인하기" num="1" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            )}      
+            )}
+
+            {/* 로그인 실패 모달 */}
+            {isFailModalOpen && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    backgroundColor: '#00000033',
+                    backdropFilter: 'blur(40px)',
+                    WebkitBackdropFilter: 'blur(40px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 200,
+                    pointerEvents: 'auto'
+                }}>
+                    {/* 모달 본문 상자 */}
+                    <div style={{
+                        backgroundColor: '#ffffff',
+                        borderRadius: '40px',
+                        boxShadow: '0px 5px 50px 0px #0000001A',
+                        padding: '40px',
+                        boxSizing: 'border-box',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start'
+                    }}>
+                        {/* 텍스트 영역 */}
+                        <div style={{ width: '100%', textAlign: 'left' }}>
+                            <h3 style={{
+                                margin: '0 0 14px 0',
+                                fontSize: '24px', 
+                                fontWeight: '600', 
+                                color: '#555555',
+                                lineHeight: '1.4'
+                            }}>
+                                다시 시도해 주세요
+                            </h3>
+                            <p style={{
+                                margin: '0 0 30px 0',
+                                fontSize: '20px', 
+                                fontWeight: '500', 
+                                color: 'rgba(0, 0, 0, 0.25)',
+                                lineHeight: '1.4'
+                            }}>
+                                ID 또는 비밀번호를 한 번 더 확인해 주세요
+                            </p>
+                        </div>
+
+                        {/* 확인 버튼 영역*/}
+                        <div style={{ 
+                            width: '100%', 
+                            display: 'flex', 
+                            justifyContent: 'flex-end'
+                        }}>
+                            <button 
+                                onClick={() => {setIsFailModalOpen(false); setIsModalOpen(true);}}
+                                style={{
+                                    background: 'none',
+                                    border: 'none',
+                                    fontSize: '24px',
+                                    fontWeight: '600',
+                                    color: '#890B00',
+                                    cursor: 'pointer',
+                                    lineHeight: '1.4',
+                                    outline: 'none'
+                                }}
+                            >
+                                확인
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )} 
         </div>
         </>
     );
