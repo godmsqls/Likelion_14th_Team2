@@ -18,8 +18,8 @@ export function Home() {
         //{ id: 1, top: '202px', left: '262px', name: '학사모운틴' },
         { id: 2, top: '30%', left: '61%', name: '졸업시뮬레이션', src: Simulation_Flag, path: '/Simulation', width: '279px' },
         { id: 3, top: '31%', left: '39%', name: '졸업요건 조회', src: Condition_Flag, path: '/Condition', width: '253px' },
-        { id: 4, top: '44.5%', left: '55%', name: '마이페이지', src: MyPage_Flag, path: '/MyPage', width: '187px'},
-        { id: 5, top: '69.5%', left: '62.5%', name: '가이드', src: Guide_Flag, path: '/Guide', width: '353px' }
+        { id: 4, top: '44.8%', left: '55.3%', name: '마이페이지', src: MyPage_Flag, path: '/MyPage', width: '187px'},
+        { id: 5, top: '69.2%', left: '62.5%', name: '가이드', src: Guide_Flag, path: '/Guide', width: '353px' }
     ];
 
     return (
