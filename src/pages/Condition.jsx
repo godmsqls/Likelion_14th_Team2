@@ -15,6 +15,7 @@ export function Condition() {
                     <img
                         className='condition-icon'
                         src={conditionImg}
+                        
                         alt='졸업요건 아이콘'
                     />
 

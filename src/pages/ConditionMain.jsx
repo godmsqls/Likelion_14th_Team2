@@ -29,6 +29,7 @@ export function ConditionMain() {
                 >
                     <ConditionBox
                         selectedYear={selectedYear}
+                        
                         onSelectYear={handleSelectYear}
                     />
                 </div>
