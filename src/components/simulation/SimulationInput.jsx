@@ -5,7 +5,7 @@ import { CountSlider } from './CountSlider'
 import { Btn } from '../Btn'
 
 const DUMMY_RETAKE_COURSES = [
-    '객체지향프로그래밍설계',
+    '객체지향프로그래밍',
     '자료구조',
     '운영체제',
     '알고리즘',
