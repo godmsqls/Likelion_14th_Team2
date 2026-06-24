@@ -1,7 +1,7 @@
 import { Header } from '../header'
 
 import map from '../../assets/Map.png'
-import simulationFlag from '../../assets/Simulation_Flag.png'
+import simulationFlag from '../../assets/flags/Simulation_Flag.png'
 import torn from '../../assets/Group 209 1.png'
 
 import './SimulationLayout.css'

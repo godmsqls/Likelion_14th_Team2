@@ -1,7 +1,7 @@
 import { Header } from '../header'
 
 import map from '../../assets/Map.png'
-import conditionFlag from '../../assets/Condition_Flag.png'
+import conditionFlag from '../../assets/flags/Condition_Flag.png'
 import torn from '../../assets/Group 209 1.png'
 
 import './ConditionLayout.css'
