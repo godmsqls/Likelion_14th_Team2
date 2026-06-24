@@ -1,5 +1,5 @@
+/* 상세 결과 전체 영역 */
 .simulation-detail-area {
-
     --detail-scale: calc(100vh / 1024px);
 
     position: relative;
@@ -26,7 +26,7 @@
     flex-direction: column;
 }
 
-/* 졸업 가능 확률*/
+/* 졸업 가능 확률 */
 .simulation-detail-top {
     width: 450px;
     height: 90px;
@@ -98,6 +98,7 @@
     text-align: right;
 }
 
+/* 구분선 */
 .simulation-detail-divider {
     position: relative;
 
@@ -120,6 +121,7 @@
     background-color: #eeeeee;
 }
 
+/* 졸업요건 목록 */
 .simulation-detail-list {
     width: 450px;
     height: 360px;
@@ -172,6 +174,7 @@
     color: rgba(0, 0, 0, 0.25);
 }
 
+/* 이수 상태 */
 .simulation-status-badge {
     grid-column: 3;
 
@@ -205,6 +208,7 @@
     background-color: rgba(255, 56, 60, 0.1);
 }
 
+/* 다시 입력하기 버튼 */
 .simulation-detail-reset-button {
     position: absolute;
 
@@ -213,6 +217,16 @@
 
     width: 450px;
     height: 80px;
+
+    transition: transform 0.1s ease;
+}
+
+.simulation-detail-reset-button:hover {
+    transform: translateY(-1px);
+}
+
+.simulation-detail-reset-button:active {
+    transform: translateY(1px);
 }
 
 .simulation-detail-reset-button > button {

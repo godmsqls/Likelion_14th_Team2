@@ -1,10 +1,7 @@
+/* 결과 화면 전체 영역 */
 .simulation-result-area {
     position: relative;
 
-    /*
-        simulation-right-panel의 padding-top(25.3vh)에서
-        -80px 위부터 화면 하단까지의 영역
-    */
     width: 800px;
     height: calc(74.7vh + 80px);
     margin: -80px 0 0 -60px;
@@ -12,19 +9,7 @@
     text-align: left;
 }
 
-/*
-    피그마 기준 본문 프레임
-    800 × 685
-
-    버튼:
-    - 화면 하단에서 70px 위
-    - 높이 80px
-
-    본문 프레임 하단과 버튼 상단 간격:
-    34px
-
-    70 + 80 + 34 = 184px
-*/
+/* 결과 제목과 게이지 영역 */
 .simulation-result-main {
     position: absolute;
 
@@ -38,7 +23,6 @@
     box-sizing: border-box;
 }
 
-/* 피그마 기준 398 × 70 */
 .simulation-result-title {
     width: 398px;
     margin: 0;
@@ -51,10 +35,7 @@
     color: #555555;
 }
 
-/*
-    게이지 프레임: 500 × 500
-    본문 프레임 하단에서 5px 위
-*/
+/* 졸업 가능 확률 게이지 */
 .simulation-result-main .simulation-gauge-box {
     position: absolute;
 
@@ -66,6 +47,7 @@
     transform: translateX(-50%);
 }
 
+/* 하단 버튼 */
 .simulation-result-buttons {
     position: absolute;
 
@@ -84,6 +66,16 @@
     width: 330px;
     height: 80px;
     flex: 0 0 330px;
+
+    transition: transform 0.1s ease;
+}
+
+.simulation-result-button:hover {
+    transform: translateY(-1px);
+}
+
+.simulation-result-button:active {
+    transform: translateY(1px);
 }
 
 .simulation-result-button > button {

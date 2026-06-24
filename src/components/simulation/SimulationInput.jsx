@@ -4,6 +4,17 @@ import './SimulationInput.css'
 import { CountSlider } from './CountSlider'
 import { Btn } from '../Btn'
 
+const DUMMY_RETAKE_COURSES = [
+    '객체지향프로그래밍설계',
+    '자료구조',
+    '운영체제',
+    '알고리즘',
+    '디지털논리회로',
+    '회로이론',
+    '공학수학',
+    '이산수학',
+]
+
 export function SimulationInput({
     majorCount,
     setMajorCount,
@@ -22,18 +33,17 @@ export function SimulationInput({
 
     const trimmedQuery = courseQuery.trim()
 
-    const isAlreadyAdded = retakeCourses.some(
-        (course) => course === trimmedQuery
-    )
+    const filteredCourses = DUMMY_RETAKE_COURSES.filter((course) => {
+        const isMatched = course.includes(trimmedQuery)
+        const isAlreadyAdded = retakeCourses.includes(course)
 
-    const handleAddCourse = () => {
-        if (trimmedQuery === '' || isAlreadyAdded) {
-            return
-        }
+        return isMatched && !isAlreadyAdded
+    })
 
+    const handleAddCourse = (selectedCourse) => {
         setRetakeCourses((previousCourses) => [
             ...previousCourses,
-            trimmedQuery,
+            selectedCourse,
         ])
 
         setCourseQuery('')
@@ -47,12 +57,12 @@ export function SimulationInput({
     }
 
     const handleCourseKeyDown = (event) => {
-        if (event.key !== 'Enter') {
+        if (event.key !== 'Enter' || filteredCourses.length === 0) {
             return
         }
 
         event.preventDefault()
-        handleAddCourse()
+        handleAddCourse(filteredCourses[0])
     }
 
     const isGpaValid = () => {
@@ -99,8 +109,7 @@ export function SimulationInput({
                         <input
                             className='simulation-text-input'
                             type='text'
-                            placeholder='재수강 과목을 입력하세요'
-                            
+                            placeholder='재수강 과목을 검색하세요'
                             value={courseQuery}
                             onChange={(event) => {
                                 setCourseQuery(event.target.value)
@@ -110,29 +119,28 @@ export function SimulationInput({
                             onKeyDown={handleCourseKeyDown}
                         />
 
-                        {isDropdownOpen &&
-                            trimmedQuery !== '' &&
-                            !isAlreadyAdded && (
-                                <div className='simulation-course-dropdown'>
-                                    <button
-                                        type='button'
-                                        onMouseDown={(event) =>
-                                            event.preventDefault()
-                                        }
-                                        onClick={handleAddCourse}
-                                    >
-                                        {trimmedQuery}
-                                    </button>
-                                </div>
-                            )}
-
-                        {isDropdownOpen &&
-                            trimmedQuery !== '' &&
-                            isAlreadyAdded && (
-                                <div className='simulation-course-dropdown'>
-                                    <p>이미 추가한 과목입니다.</p>
-                                </div>
-                            )}
+                        {isDropdownOpen && (
+                            <div className='simulation-course-dropdown'>
+                                {filteredCourses.length > 0 ? (
+                                    filteredCourses.map((course) => (
+                                        <button
+                                            type='button'
+                                            key={course}
+                                            onMouseDown={(event) =>
+                                                event.preventDefault()
+                                            }
+                                            onClick={() =>
+                                                handleAddCourse(course)
+                                            }
+                                        >
+                                            {course}
+                                        </button>
+                                    ))
+                                ) : (
+                                    <p>검색 결과가 없습니다.</p>
+                                )}
+                            </div>
+                        )}
                     </div>
 
                     <div className='simulation-retake-list'>
