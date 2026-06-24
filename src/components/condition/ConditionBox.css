@@ -1,66 +1,87 @@
 .condition-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-    width: 100%;
-}
-
-.condition-box-tabs {
-    display: flex;
-    align-items: center;
-
-    width: 66.25%;
-    height: 31px;
-
-    gap: 40px;
-    margin: 0 0 6.7383vh 0;
+  width: 100%;
 }
 
 /* 학번 탭 */
+.condition-box-tabs {
+  display: flex;
+  align-items: center;
+
+  width: 66.25%;
+  height: 31px;
+
+  gap: 40px;
+  margin: 0 0 6.7383vh 0;
+}
+
 .condition-box-tab {
-    position: relative;
+  position: relative;
 
-    padding: 0;
+  padding: 0;
 
-    border: none;
-    background: transparent;
+  border: none;
+  background: transparent;
 
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
 
-    color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.25);
 
-    white-space: nowrap;
-    cursor: pointer;
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition: transform 150ms ease;
+}
+
+.condition-box-tab:hover {
+  transform: translateY(-1px);
 }
 
 .condition-box-tab.active {
-    color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .condition-box-tab.active::after {
-    content: '';
+  content: '';
 
-    position: absolute;
+  position: absolute;
 
-    left: 0;
-    bottom: 0;
+  left: 0;
+  bottom: 0;
 
-    width: 100%;
-    height: 1.5px;
+  width: 100%;
+  height: 1.5px;
 
-    background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
+/* 졸업요건 박스 */
 .condition-box-result {
-    width: 100%;
-    height: 77.4414vh;
+  width: 100%;
+  height: 77.4414vh;
 
-    border-radius: 8px;
-    background-color: #f4f4f4;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
 
-    box-sizing: border-box;
+.condition-box-result--20-23 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.condition-box-result--24 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.condition-box-result--25 {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.condition-box-result--26 {
+  background-color: rgba(0, 0, 0, 0.2);
 }

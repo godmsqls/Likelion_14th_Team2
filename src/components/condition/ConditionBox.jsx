@@ -1,35 +1,35 @@
-import { useState } from 'react'
 import './ConditionBox.css'
 
-export function ConditionBox() {
-    const [selectedYear, setSelectedYear] = useState('20-23학번')
+const yearTabs = [
+    { value: '20-23', label: '20-23학번' },
+    { value: '24', label: '24학번' },
+    { value: '25', label: '25학번' },
+    { value: '26', label: '26학번' },
+]
 
-    const yearTabs = ['20-23학번', '24학번', '25학번', '26학번']
-
+export function ConditionBox({ selectedYear, onSelectYear }) {
     return (
         <section className='condition-box'>
             <div className='condition-box-tabs'>
                 {yearTabs.map((year) => (
                     <button
                         type='button'
-                        key={year}
+                        key={year.value}
                         className={
-                            selectedYear === year
+                            selectedYear === year.value
                                 ? 'condition-box-tab active'
                                 : 'condition-box-tab'
                         }
-                        onClick={() => setSelectedYear(year)}
+                        onClick={() => onSelectYear(year.value)}
                     >
-                        {year}
+                        {year.label}
                     </button>
                 ))}
             </div>
 
             <div
-                className='condition-box-result'
-                data-year={selectedYear}
-            >
-            </div>
+                className={`condition-box-result condition-box-result--${selectedYear}`}
+            />
         </section>
     )
 }
