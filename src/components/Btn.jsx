@@ -1,29 +1,11 @@
 import React, { useState } from 'react';
-import btn1 from '../assets/Button1.png'; 
-import btn2 from '../assets/Button2.png'; 
-import btn3 from '../assets/Button3.png'; 
 
 export function Btn({ text, num, onClick }) {
     const [isHovered, setIsHovered] = useState(false);
-
-    let btnImg = btn1;
-    if (num == 2) btnImg = btn2;
-    if (num == 3) btnImg = btn3;
-
-    let currentOpacity = 1;
-    if (isHovered) {
-        currentOpacity = num == 3 ? 0.6 : 0.8;
-    }
     
     return (
         <button
             style={{
-                backgroundImage: `url(${btnImg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                opacity: currentOpacity,
-
                 width: '100%',
                 height: '80px',
                 padding: '10px 40px',
@@ -35,8 +17,12 @@ export function Btn({ text, num, onClick }) {
                 alignItems: 'center',
                 justifyContent: 'center',
 
-
+                backgroundColor: 
+                    num == 2 ? ( isHovered ? 'rgba(235, 231, 224, 0.8)' : 'rgba(235, 231, 224, 1)') 
+                    : num == 3 ? ( isHovered ? 'rgba(0, 0, 0, 0.03)' : 'rgba(0, 0, 0, 0.05)' ) 
+                    : ( isHovered ? 'rgba(137, 11, 0, 0.8)' : 'rgba(137, 11, 0, 1)' ),
                 color: num == 2 ? '#890B00' : num == 3 ? 'rgba(0, 0, 0, 0.5)' :'#ffffff',
+
                 fontSize: '24px',
                 fontWeight: '600',
                 textAlign: 'center',

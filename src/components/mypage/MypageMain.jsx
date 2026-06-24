@@ -3,7 +3,7 @@ import { Btn } from '../Btn'
 import { MypageCard } from './MypageCard'
 import './MypageMain.css'
 
-export function MypageMain({ onNavigateToCourse }) {
+export function MypageMain({ onNavigateToCourse, onResetHover }) {
     const [hoveredId, setHoveredId] = useState(null);
 
     const userCards = [
@@ -17,7 +17,7 @@ export function MypageMain({ onNavigateToCourse }) {
 
     return(
         <>
-        <div className='mypage-main-container'>
+        <div className='mypage-main-container' onMouseEnter={onResetHover}>
             <div className="cards-wrapper">
                 {userCards.map((card) => {
                     const isHovered = hoveredId === card.id;
@@ -34,7 +34,9 @@ export function MypageMain({ onNavigateToCourse }) {
                                     : `rotate(${card.rotate})`,
                             zIndex: isHovered ? 50 : 5
                         }}
-                        onMouseEnter={() => setHoveredId(card.id)}
+                        onMouseEnter={(e) => {
+                            e.stopPropagation();
+                            setHoveredId(card.id)}}
                         onMouseLeave={() => setHoveredId(null)}
                     >
                         <MypageCard value={card.value} name={card.name} />

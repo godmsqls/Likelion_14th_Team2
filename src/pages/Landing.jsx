@@ -47,7 +47,7 @@ export function Landing() {
 
             // 일반 로그인 시 홈으로 이동
             // 최초 로그인 시 가이드 이동 구현 필요
-            navigate('/Home'); 
+            navigate('/Guide'); 
             
         } catch (error) {
             console.error("로그인 중 에러 발생:", error);
@@ -137,24 +137,33 @@ export function Landing() {
                     zIndex: 2,
                     cursor: isLoginStep ? 'default' : 'pointer',
 
-                    bottom: isLoginStep ? '50%' : '0px',
+                    bottom: isLoginStep ? 'auto' : '-125px',
 
                     transform: isLoginStep 
-                        ? 'translateY(50%)' 
+                        ? 'translateY(0%)' 
                         : isHovered 
                             ? 'translateY(600px)' 
                             : 'translateY(650px)',
                     
                     transition: 'all 0.75s cubic-bezier(0.25, 1, 0.5, 1)', 
                     
-                    width: isLoginStep ? '65%' : '1000px',
+                    width: isLoginStep ? 'auto' : '1200px',
+                    height: isLoginStep ? '100%' : 'auto',
 
                     filter: isLoginStep ? 'blur(0.2vw)' : 'none',
                     opacity: isLoginStep ? 0.25 : 1
                 }}
             >
-                <img src={Map} style={{ width: '100%', display: 'block' }} alt="보물지도"/>            
-            </div>    
+                <img 
+                    src={Map} 
+                    style={{ 
+                        width: isLoginStep ? 'auto' : '100%', 
+                        height: isLoginStep ? '100%' : 'auto', 
+                        display: 'block' 
+                    }} 
+                    alt="보물지도"
+                />            
+            </div>
 
             {/*로그인 모달*/}
             {isModalOpen && (

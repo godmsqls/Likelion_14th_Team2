@@ -3,7 +3,7 @@ import { Btn } from '../components/Btn'
 import { ConditionLayout } from '../components/condition/ConditionLayout'
 import { useNavigate } from 'react-router-dom'
 
-import conditionImg from '../assets/condition_img.png'
+import conditionImg from '../assets/condition_img.png' 
 
 export function Condition() {
     const navigate = useNavigate()

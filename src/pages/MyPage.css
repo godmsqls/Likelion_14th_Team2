@@ -29,8 +29,8 @@
 
 .mypage-flag {
   position: absolute;
-  top: 392px;
-  left: 158px;
+  top: 39.5%;
+  left: 25.5%;
   z-index: 2;
 }
 
@@ -49,6 +49,89 @@
   pointer-events: none;
 }
 
+/* ================= 우니 카드 ================= */
+
+.character-card-thumbnail {
+  position: absolute;
+  left: 70px;
+  top: 60px;
+
+  width: max-content;
+  
+  transform: rotate(-10deg);
+  transform-origin: center;
+
+  z-index: 1;
+  cursor: pointer;
+  
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.character-card-thumbnail img {
+  width: 720px;
+  height: auto;
+  display: block;
+}
+
+.mypage-container.backdrop-blurred .left-section,
+.mypage-container.backdrop-blurred .right-section,
+.mypage-container.backdrop-blurred .torn {
+  filter: blur(5px);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.mypage-container.backdrop-blurred {
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+  z-index: 999; /* 마이페이지 내부의 모든 z-index 요소보다 상단 배치 */
+  animation: fadeIn 0.2s ease-out;
+ }
+
+
+.character-card-thumbnail.is-centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+
+  transform: rotate(0deg);
+  z-index: 9999;
+}
+
+/* 부드러운 화면 전환 키프레임 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* ================= 우측 구역 스타일 ================= */
 .right-section {
   position: absolute;
   top: 0;
