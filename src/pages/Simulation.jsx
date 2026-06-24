@@ -21,6 +21,7 @@ export function Simulation() {
                     <p className='simulation-text'>
                         몇 가지 정보를 입력하면
                         <br />
+                        
                         <span>졸업 가능 확률</span>을 구할 수 있어요
                     </p>
 

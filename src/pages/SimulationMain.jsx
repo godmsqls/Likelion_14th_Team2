@@ -59,6 +59,7 @@ export function SimulationMain() {
                             retakeCourses={retakeCourses}
                             setRetakeCourses={setRetakeCourses}
                             targetGpa={targetGpa}
+                            
                             setTargetGpa={setTargetGpa}
                             onStartSimulation={handleStartSimulation}
                             onGoToMyPage={() => navigate('/MyPage')}
