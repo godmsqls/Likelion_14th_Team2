@@ -4,24 +4,133 @@
     align-items: flex-start;
 
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 
-    padding: 200px 100px 600px 120px; 
+    padding: 60px 100px 100px 120px; /* 기존 상단 200px 패딩이 너무 깊어 타이틀과 겹치지 않게 조절 */
     box-sizing: border-box;
+    background-color: #fafafa;
+
+    font-family: Pretendard Variable;
 }
 
 .mypage-course {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 700;
     line-height: 1.4;
-    color: rgba(0,0,0,0.75);
-    margin-bottom: 84px;
+    color: #555555;
+    margin-bottom: 40px;
+    position: relative;
 }
 
+/* 성적 대시보드 메인 영역 */
 .mypage-course-content {
     width: 100%;
-    height: 100vh;
-    min-height: 700px;
+    height: 65vh; 
+    min-height: 500px;
+    
     border-radius: 10px;
-    background-color: #F5F5F5;
+    background-color: #fafafa;
+    padding: 24px;
+    box-sizing: border-box;
+    
+    /* 💡 세로 스크롤 활성화 및 가로 넘침 방지 */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+/* 테이블 컨테이너 및 공통 스크롤바 제어 */
+.course-table-container {
+    width: 100%;
+    height: 100%;
+}
+
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+/* 표 헤더 스타일 */
+.course-table th {
+    background-color: #f8f9fa;
+    color: #555555;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 24px 12px;
+    border-bottom: 2px solid #edf2f7;
+}
+
+/* 표 바디 행 스타일 */
+.course-table td {
+    padding: 22px 12px;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7;
+    font-weight: 500;
+
+    line-height: 1.5;
+}
+
+/* 마우스 호버 시 행 강조 효과 */
+.course-table tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* 과목명 좌측 정렬 */
+.course-table td.course-name {
+    text-align: left;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* 성적(A+, A0) 강조 색상 */
+.course-table td.course-grade {
+    font-weight: 700;
+    color: #890B00; /* 전설의 조러비소 테마 핏 버건디 색상 매칭 */
+    font-size: 17px;
+}
+
+/* 이수 구분 (전필/전선) 라벨 칩 디자인 */
+.label-gubun {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.label-gubun.compulsory {
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+.label-gubun.elective {
+    background-color: #f0fff4;
+    color: #38a169;
+}
+
+/* 로딩 및 빈 데이터 예외 처리 UI */
+.course-loading, .course-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.35);
+}
+
+/* 아직 성적 입력 전인 과목 공조 (getGrade: "") */
+.course-table td .grade-evaluating {
+    font-size: 16px;
+    font-weight: 500;
+    color: #a0aec0; /*흐린 회색 처리*/
+    /* background-color: #edf2f7; */
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+/* 성적이 정상 도출된 폰트 강조 */
+.course-table td.course-grade {
+    font-weight: 700;
+    color: #890B00; 
+    font-size: 17px;
 }

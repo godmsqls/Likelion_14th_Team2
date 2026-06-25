@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://52.79.236.204:8080',
+        target: 'https://kwu-graduation.duckdns.org',
         changeOrigin: true,
         secure: false,
       }
