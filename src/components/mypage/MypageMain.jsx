@@ -115,11 +115,11 @@ export function MypageMain({ onNavigateToCourse, onResetHover }) {
                                         : `rotate(${card.rotate})`,
                                 zIndex: isHovered ? 50 : 5
                             }}
-                            onMouseEnter={(e) => {
-                                e.stopPropagation();
-                                setHoveredId(card.id);
-                            }}
-                            onMouseLeave={() => setHoveredId(null)}
+                            // onMouseEnter={(e) => {
+                            //     // e.stopPropagation();
+                            //     // setHoveredId(card.id);
+                            // }}
+                            // onMouseLeave={() => setHoveredId(null)}
                         >
                             <MypageCard value={card.value} name={card.name} />
                         </div>
