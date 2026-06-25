@@ -15,6 +15,11 @@ export function MypageMain({ onNavigateToCourse, onResetHover }) {
         { id: 6, name: '졸업 예정일', value: '2030년 2월', top: '380px', left: '520px', rotate: '2deg' }
     ];
 
+    const handleKLAS = () => {
+        const targetUrl = "https://klas.kw.ac.kr/usr/cmn/login/LoginForm.do";
+        window.open(targetUrl, '_blank');
+    }
+
     return(
         <>
         <div className='mypage-main-container' onMouseEnter={onResetHover}>
@@ -46,7 +51,7 @@ export function MypageMain({ onNavigateToCourse, onResetHover }) {
             
             <div className='mypage-button'>
                 <Btn text="수강 내역 조회하기" num="3" onClick={onNavigateToCourse}/>
-                <Btn text="KLAS 학사정보 바로가기" num="1" />
+                <Btn text="KLAS 학사정보 바로가기" num="1" onClick={handleKLAS} />
             </div>    
         </div>
         
